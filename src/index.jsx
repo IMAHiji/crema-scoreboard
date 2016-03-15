@@ -1,41 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory} from 'react-router';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import { Router, Route, Link, browserHistory} from 'react-router';
 import io from 'socket.io-client';
 import {Map, List} from 'immutable';
 
-
-import {setState} from './components/action_creators';
-import reducer from './components/reducer';
-
 import App from './components/app';
-import {ScoreBoardContainer} from './components/scoreboard/scoreboard';
-import {SlackLeteContainer} from './components/slackLete/slackLete';
+import alt from './libs/alt';
+import storage from './libs/storage';
+import persist from './libs/persist';
+
+import Scoreboard from './components/scoreboard/scoreboard';
+//import {SlackLeteContainer} from './components/slackLete/slackLete';
 
 
 
-const store = createStore(reducer);
-store.dispatch({
-    type:'SET_STATE',
-    state:{
-        message:"Hello There from State",
-        OtherMessage: "This is another message from state"
-    }
-});
 
-console.log('Alt');
+
+
 const routes =
     <Route component={App}>
-        <Route path="/" component={ScoreBoardContainer}  />
-        <Route path="/slacklete" component={SlackLeteContainer}  />
+        <Route path="/" component={Scoreboard}  />
     </Route>;
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={hashHistory}>{routes}</Router>
-    </Provider>,
+    <Router history={browserHistory} children={routes} />,
     document.getElementById('app')
 );
 
