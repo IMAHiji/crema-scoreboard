@@ -25,6 +25,7 @@ store.dispatch({
     }
 });
 
+console.log('Alt');
 const routes =
     <Route component={App}>
         <Route path="/" component={ScoreBoardContainer}  />
