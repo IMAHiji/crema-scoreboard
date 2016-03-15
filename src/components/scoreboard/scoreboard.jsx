@@ -1,25 +1,25 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
-import * as actionCreators from '../action_creators';
+import {loadSlackletes} from '../../actions/ScoreboardActions';
 
 
 
 export const Scoreboard =  React.createClass({
     listSlackletes:function(){
-        console.log('Props slackletes', this.props.slackletes)
-        return this.props.slackletes;
+        const slackletes = this.props.slackletes.data
+        console.log('Props slackletes', slackletes);
+        return slackletes;
     },
     mixins:[PureRenderMixin],
     render:function(){
         return (
             <div className="scoreboardWrapper">
-                <ul className="scoreboardList">
-                    {this.listSlackletes().map(entry =>
+                <h1>Hello I am scoreboard</h1>
 
-                        <li key={entry}>{entry}</li>
-                    )}
-                </ul>
+                    {this.listSlackletes().map(entry =>
+                    <li key={entry._id}>{entry.name}</li> )}
+
             </div>
         )
     }
@@ -29,15 +29,14 @@ export const Scoreboard =  React.createClass({
 });
 
 
-function mapStateToProps(state) {
-    console.log('State from mapStatetoProps in Scoreboard', state);
+const mapStateToProps = (state) => {
+
+
     return {
-
-        slackletes:state.get('slackletes')
-
+        slackletes:loadSlackletes(state.slackletes)
     }
 }
 
-export const ScoreBoardContainer = connect(mapStateToProps, actionCreators)(Scoreboard);
+export const ScoreBoardContainer = connect(mapStateToProps)(Scoreboard);
 
 
