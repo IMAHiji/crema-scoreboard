@@ -2,8 +2,7 @@
 
 
 
-require('es6-promise').polyfill();
-import fetch from 'isomorphic-fetch';
+
 
 //const slackleteUri = 'https://slack-leaderboards.herokuapp.com/scores';
 

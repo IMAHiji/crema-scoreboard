@@ -16,9 +16,8 @@ export const Scoreboard =  React.createClass({
         return (
             <div className="scoreboardWrapper">
                 <h1>Hello I am scoreboard</h1>
-
                     {this.listSlackletes().map(entry =>
-                    <li key={entry._id}>{entry.name}</li> )}
+                    <li key={entry._id}>{entry.name}: {entry.score}</li> )}
 
             </div>
         )
