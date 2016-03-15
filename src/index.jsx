@@ -5,6 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
 import {Map, List} from 'immutable';
+import slackletes from './dummyScores';
 
 
 import {setState} from './components/action_creators';
@@ -18,17 +19,15 @@ import {SlackLeteContainer} from './components/slackLete/slackLete';
 
 const store = createStore(reducer);
 store.dispatch({
-    type:'SET_STATE',
+    type:'GET_SLACKLETES',
     state:{
-        message:"Hello There from State",
-        OtherMessage: "This is another message from state"
+        slackletes:slackletes
     }
 });
 
 const routes =
     <Route component={App}>
         <Route path="/" component={ScoreBoardContainer}  />
-        <Route path="/slacklete" component={SlackLeteContainer}  />
     </Route>;
 
 ReactDOM.render(

@@ -1,17 +1,18 @@
-import {Map} from 'immutable';
+import {Map, List} from 'immutable';
 
 
-function setState(state, newState){
-    return state.merge(newState);
+
+function getSlackletes(state, newState){
+    return Object.assign({}, state, newState);
 
 }
 
 
 export default function(state = Map(), action){
     switch(action.type) {
-        case 'SET_STATE':
+        case 'GET_SLACKLETES':
             console.log('Set State Case fired, ',action.state);
-            return setState(state, action.state);
+            return getSlackletes(state, action.state);
     }
     return state;
 }
