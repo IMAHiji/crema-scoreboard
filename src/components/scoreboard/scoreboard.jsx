@@ -1,41 +1,57 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {loadSlackletes} from '../../actions/ScoreboardActions';
+import {loadSlackletes, fetchSlackletesifNeeded, requestSlackletes} from '../../actions/ScoreboardActions';
 
 
 
-export const Scoreboard =  React.createClass({
-    listSlackletes:function(){
-        const slackletes = this.props.slackletes.data
-        console.log('Props slackletes', slackletes);
-        return slackletes;
+const Scoreboard = React.createClass( {
+    componentWillMount(){
+
     },
-    mixins:[PureRenderMixin],
-    render:function(){
+    componentDidMount(){
+        this.props.dispatch(loadSlackletes());
+    },
+
+    render(){
+        const {slackletes, isFetching} = this.props;
         return (
-            <div className="scoreboardWrapper">
-                <h1>Hello I am scoreboard</h1>
-                    {this.listSlackletes().map(entry =>
-                    <li key={entry._id}>{entry.name}: {entry.score}</li> )}
+            <div>
+                <h1>Scoreboard Module Render</h1>
+                {
+                    isFetching && slackletes.length === 0 &&
+                    <h2>Loading...</h2>
+                }
+                {
+                    !isFetching && slackletes.length === 0 &&
+                    <h2>Empty...</h2>
+                }
+                {
+                    !isFetching && slackletes.length>0 &&
+                    <ul>
+                        {slackletes.map((slacklete)=>
+                            <li key={slacklete._id}><span>{slacklete.name}</span><span> Score: {slacklete.score} </span></li>
+                        )}
+                    </ul>
+                }
 
             </div>
+
+
         )
     }
-
-
 
 });
 
 
-const mapStateToProps = (state) => {
-
-
-    return {
-        slackletes:loadSlackletes(state.slackletes)
+function mapStateToProps(state){
+    console.log('Map State to Props: ', state);
+    return{
+        isFetching:state.slackletes.isFetching,
+        slackletes:state.slackletes.slackletes
     }
+
 }
 
-export const ScoreBoardContainer = connect(mapStateToProps)(Scoreboard);
+export default connect(mapStateToProps)(Scoreboard);
 
 
