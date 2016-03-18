@@ -10,6 +10,12 @@ import fetch from 'isomorphic-fetch';
 
 
 
+const socket = io('https://slack-leaderboards.herokuapp.com/scores');
+
+socket.on('connect', function(){
+    console.log('Connected');
+});
+
 import configureStore from './stores/configureStore';
 
 import Root from './components/Root';
@@ -21,6 +27,7 @@ import ScoreBoard from './components/scoreboard/scoreboard';
 
 
 const store = configureStore();
+
 console.log('Index');
 const routes =
     <Route component={Root}>
