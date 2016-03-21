@@ -177,7 +177,7 @@ export function requestSlackletes(){
 }
 
 function receiveSlackletes(json){
-    console.log('RECEIVED SLACKLETES JSON', json);
+    
     return{
         type:RECEIVE_SLACKLETES,
         slackletes:json,

@@ -46,7 +46,6 @@ const Scoreboard = React.createClass( {
 
 
 function mapStateToProps(state){
-    console.log('Map State to Props: ', state);
     return{
         isFetching:state.slackletes.isFetching,
         slackletes:state.slackletes.slackletes

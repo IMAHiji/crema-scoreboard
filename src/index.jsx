@@ -9,11 +9,11 @@ require('es6-promise').polyfill();
 import fetch from 'isomorphic-fetch';
 
 
+// const socket = io(`${location.protocol}//${location.hostname}:8090`);
+const socket = io('https://slack-leaderboards.herokuapp.com/socket.io/');
 
-const socket = io('https://slack-leaderboards.herokuapp.com/scores');
-
-socket.on('connect', function(){
-    console.log('Connected');
+socket.on('connection', function(data){
+    console.log('Connected', data);
 });
 
 import configureStore from './stores/configureStore';
@@ -28,7 +28,6 @@ import ScoreBoard from './components/scoreboard/scoreboard';
 
 const store = configureStore();
 
-console.log('Index');
 const routes =
     <Route component={Root}>
         <Route path="/" component={ScoreBoard}  />
