@@ -18,8 +18,8 @@ const Scoreboard = React.createClass( {
         const {slackletes, isFetching} = this.props;
         return (
             <div className="row">
-                <div className="small-12 large-expand columns">
-                <h1>Scoreboard Module Render</h1>
+                <div className="large-expand columns">
+                <h1 className="text-center">Scoreboard</h1>
                 {
                     isFetching && slackletes.length === 0 &&
                     <h2>Loading...</h2>
@@ -30,12 +30,17 @@ const Scoreboard = React.createClass( {
                 }
                 {
                     !isFetching && slackletes.length>0 &&
-                    <ul className="">
+                    <table className="hover">
+
+                        <thead>
+                        <tr><th>Slacklete</th><th>Score</th></tr>
+                        </thead>
+                        <tbody>
                         {slackletes.map((slacklete)=>
-                            <li key={slacklete._id}><span>{slacklete.name}</span><span> Score: {slacklete.score} </span></li>
+                            <tr key={slacklete._id}><td>{slacklete.name}</td><td>{slacklete.score} </td></tr>
                         )}
-                        <button className="warning button">I am a button</button>
-                    </ul>
+                        </tbody>
+                    </table>
 
                 }
                 </div>
