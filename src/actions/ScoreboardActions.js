@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-
+import _ from 'lodash';
 //const slackleteUri = 'https://slack-leaderboards.herokuapp.com/scores';
 
 
@@ -15,11 +15,18 @@ export function requestSlackletes(){
     }
 }
 
+
+function sortSlackletes(json){
+    return _.sortBy(json, function(num){
+        return -num.score
+    })
+}
+
 function receiveSlackletes(json){
-    
+
     return{
         type:RECEIVE_SLACKLETES,
-        slackletes:json,
+        slackletes:sortSlackletes(json),
         isFetching:false
     }
 }

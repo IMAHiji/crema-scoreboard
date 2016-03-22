@@ -34,7 +34,7 @@ const Scoreboard = React.createClass( {
                         {slackletes.map((slacklete)=>
                             <li key={slacklete._id}><span>{slacklete.name}</span><span> Score: {slacklete.score} </span></li>
                         )}
-                        <button className="success button">I am a button</button>
+                        <button className="warning button">I am a button</button>
                     </ul>
 
                 }
