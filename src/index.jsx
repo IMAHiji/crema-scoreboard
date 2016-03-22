@@ -1,12 +1,13 @@
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, hashHistory} from 'react-router';
-import {createStore, applyMiddleware} from 'redux';
+// import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
-import {Map, List} from 'immutable';
+
 require('es6-promise').polyfill();
-import fetch from 'isomorphic-fetch';
 
 
 // const socket = io(`${location.protocol}//${location.hostname}:8090`);
@@ -16,8 +17,9 @@ socket.on('connection', function(data){
     console.log('Connected', data);
 });
 
-import configureStore from './stores/configureStore';
 
+
+import configureStore from './stores/configureStore';
 import Root from './components/Root';
 import ScoreBoard from './components/scoreboard/scoreboard';
 

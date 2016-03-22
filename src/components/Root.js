@@ -4,8 +4,26 @@ import configureStore from '../stores/configureStore';
 
 const store = configureStore();
 
-export default class Root extends Component {
+import '../styles/foundation.scss';
+import 'script!jquery'
+import 'script!foundation-sites'
+
+
+
+
+class Root extends Component {
+
+    constructor(props){
+        super(props)
+    }
+
     render(){
         return this.props.children;
     }
+
+    componentDidMount(){
+        $(document).foundation()
+    }
 }
+
+export default Root;

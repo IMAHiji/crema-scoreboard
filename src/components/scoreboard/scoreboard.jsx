@@ -29,11 +29,13 @@ const Scoreboard = React.createClass( {
                 }
                 {
                     !isFetching && slackletes.length>0 &&
-                    <ul>
+                    <ul className="">
                         {slackletes.map((slacklete)=>
                             <li key={slacklete._id}><span>{slacklete.name}</span><span> Score: {slacklete.score} </span></li>
                         )}
+                        <button className="success button">I am a button</button>
                     </ul>
+
                 }
 
             </div>
