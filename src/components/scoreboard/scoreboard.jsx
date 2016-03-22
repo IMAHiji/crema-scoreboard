@@ -17,7 +17,8 @@ const Scoreboard = React.createClass( {
     render(){
         const {slackletes, isFetching} = this.props;
         return (
-            <div>
+            <div className="row">
+                <div className="small-12 large-expand columns">
                 <h1>Scoreboard Module Render</h1>
                 {
                     isFetching && slackletes.length === 0 &&
@@ -37,7 +38,7 @@ const Scoreboard = React.createClass( {
                     </ul>
 
                 }
-
+                </div>
             </div>
 
 
