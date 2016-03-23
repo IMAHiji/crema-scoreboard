@@ -1,18 +1,19 @@
 import React, {Component, PropTypes} from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import {loadSlackletes, fetchSlackletesifNeeded, requestSlackletes} from '../../actions/ScoreboardActions';
 
 
 
-const Scoreboard = React.createClass( {
-    mixins:[PureRenderMixin],
+class Scoreboard extends React.Component {
+    constructor(props){
+        super(props)
+    }
     componentWillMount(){
 
-    },
+    }
     componentDidMount(){
         this.props.dispatch(loadSlackletes());
-    },
+    }
 
     render(){
         const {slackletes, isFetching} = this.props;
@@ -50,7 +51,7 @@ const Scoreboard = React.createClass( {
         )
     }
 
-});
+};
 
 
 function mapStateToProps(state){

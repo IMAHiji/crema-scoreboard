@@ -1,4 +1,4 @@
-export default [
+const testData= [
     {
         "_id": "560efc7e3bc36511004b08b7",
         "slack_id": "U024F579Z",
@@ -146,4 +146,4 @@ export default [
         "__v": 0,
         "score": 74
     }
-]
+];
