@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {loadSlackletes, fetchSlackletesifNeeded, requestSlackletes} from '../../actions/ScoreboardActions';
 
+import SlackleteTable from './SlackleteTable.jsx'
+
 
 
 class Scoreboard extends React.Component {
@@ -31,17 +33,9 @@ class Scoreboard extends React.Component {
                 }
                 {
                     !isFetching && slackletes.length>0 &&
-                    <table className="hover">
-
-                        <thead>
-                        <tr><th>Slacklete</th><th>Score</th></tr>
-                        </thead>
-                        <tbody>
-                        {slackletes.map((slacklete)=>
-                            <tr key={slacklete._id}><td>{slacklete.name}</td><td>{slacklete.score} </td></tr>
-                        )}
-                        </tbody>
-                    </table>
+                    
+                    <SlackleteTable slackletes={slackletes} />
+                    
 
                 }
                 </div>
